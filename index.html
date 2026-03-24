@@ -1327,7 +1327,16 @@
       form.appendChild(d); return d;
     })();
 
-    const allUsers = JSON.parse(localStorage.getItem('gb_users') || '[]');
+    let allUsers = JSON.parse(localStorage.getItem('gb_users') || '[]');
+
+    // מיגרציה: אם יש משתמש ישן ב-gb_user, העבר אותו לרשימה
+    const oldUser = JSON.parse(localStorage.getItem('gb_user') || 'null');
+    if (oldUser && oldUser.email && !allUsers.find(u => u.email === oldUser.email.toLowerCase())) {
+      oldUser.email = oldUser.email.toLowerCase();
+      allUsers.push(oldUser);
+      localStorage.setItem('gb_users', JSON.stringify(allUsers));
+    }
+
     const matched = allUsers.find(u => u.email === email);
 
     if (!matched) {
