@@ -1327,23 +1327,20 @@
       form.appendChild(d); return d;
     })();
 
-    const saved = JSON.parse(localStorage.getItem('gb_user') || 'null');
+    const allUsers = JSON.parse(localStorage.getItem('gb_users') || '[]');
+    const matched = allUsers.find(u => u.email === email);
 
-    if (!saved) {
-      errEl.textContent = '❌ לא נמצא חשבון — הירשם קודם';
+    if (!matched) {
+      errEl.textContent = '❌ לא נמצא חשבון עם מייל זה — הירשם קודם';
       return;
     }
 
-    if (saved.email.toLowerCase() !== email) {
-      errEl.textContent = `❌ מייל שגוי (הרשום: ${saved.email})`;
-      return;
-    }
-
-    if (saved.password && saved.password !== password) {
+    if (matched.password && matched.password !== password) {
       errEl.textContent = '❌ סיסמא שגויה';
       return;
     }
 
+    localStorage.setItem('gb_user', JSON.stringify(matched));
     window.location.href = 'dashboard.html';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLogin(); closeSignup(); } });
@@ -1387,18 +1384,24 @@
       style:     inputs[5].value
     };
 
-    // שמור ב-localStorage
-    localStorage.setItem('gb_user', JSON.stringify({
+    // שמור ב-localStorage (רשימת משתמשים)
+    const newUser = {
       firstName: data.firstName,
       lastName:  data.lastName,
-      email:     data.email,
+      email:     data.email.toLowerCase(),
       password:  inputs[3].value,
       rank:      data.rank,
       style:     data.style,
       plan:      'חינמי',
       joinDate:  new Date().toLocaleDateString('he-IL'),
       avatar:    data.firstName.charAt(0).toUpperCase()
-    }));
+    };
+    const allUsers = JSON.parse(localStorage.getItem('gb_users') || '[]');
+    const existingIdx = allUsers.findIndex(u => u.email === newUser.email);
+    if (existingIdx >= 0) allUsers[existingIdx] = newUser;
+    else allUsers.push(newUser);
+    localStorage.setItem('gb_users', JSON.stringify(allUsers));
+    localStorage.setItem('gb_user', JSON.stringify(newUser));
 
     fetch(SHEET_URL, {
       method: 'POST',
