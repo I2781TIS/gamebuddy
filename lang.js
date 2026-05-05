@@ -255,53 +255,126 @@
       if (t[key] !== undefined) el.placeholder = t[key];
     });
 
-    // Update toggle button
-    const btn = document.getElementById('gb-lang-toggle');
-    if (btn) {
-      btn.querySelector('.gb-flag').textContent = t['toggle.flag'];
-      btn.querySelector('.gb-label').textContent = t['toggle.label'];
-    }
+    // Update button label to show current language
+    const label = document.querySelector('#gb-lang-toggle .gb-label');
+    if (label) label.textContent = t.lang === 'he' ? 'עברית' : 'English';
 
     localStorage.setItem('gb_lang', lang);
     window._gbLang = lang;
   }
 
-  // ── TOGGLE ──
-  window.gbToggleLang = function () {
-    apply(window._gbLang === 'en' ? 'he' : 'en');
-  };
+  const LANGS = [
+    { code: 'he', flag: '🇮🇱', label: 'עברית' },
+    { code: 'en', flag: '🇺🇸', label: 'English' },
+  ];
 
-  // ── INJECT BUTTON STYLE ──
+  // ── INJECT STYLE ──
   function injectStyle() {
     if (document.getElementById('gb-lang-style')) return;
     const s = document.createElement('style');
     s.id = 'gb-lang-style';
     s.textContent = `
+      #gb-lang-wrap { position: relative; display: inline-flex; }
+
       #gb-lang-toggle {
-        display: inline-flex; align-items: center; gap: 7px;
-        background: rgba(124,58,237,0.15);
-        border: 1px solid rgba(124,58,237,0.4);
-        border-radius: 50px; padding: 6px 14px;
-        cursor: pointer; font-size: 0.85rem; font-weight: 600;
-        color: #c084fc; transition: background .2s, border-color .2s;
-        font-family: inherit;
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(236,72,153,0.2));
+        border: 1.5px solid rgba(168,85,247,0.7);
+        border-radius: 50px; padding: 8px 18px;
+        cursor: pointer; font-size: 0.9rem; font-weight: 700;
+        color: #e2e8f0; transition: all .2s;
+        font-family: inherit; white-space: nowrap;
+        box-shadow: 0 0 12px rgba(124,58,237,0.25);
       }
-      #gb-lang-toggle:hover { background: rgba(124,58,237,0.3); border-color: rgba(168,85,247,0.6); }
+      #gb-lang-toggle:hover {
+        background: linear-gradient(135deg, rgba(124,58,237,0.5), rgba(236,72,153,0.35));
+        border-color: #a855f7;
+        box-shadow: 0 0 20px rgba(124,58,237,0.45);
+      }
+      .gb-arrow { font-size: 0.65rem; opacity: 0.8; transition: transform .2s; margin-right: 2px; }
+      #gb-lang-wrap.open .gb-arrow { transform: rotate(180deg); }
+
+      #gb-lang-dropdown {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        background: #16162a;
+        border: 1px solid rgba(168,85,247,0.45);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+        min-width: 150px;
+        z-index: 99999;
+      }
+      #gb-lang-wrap.open #gb-lang-dropdown { display: block; animation: gbFadeIn .15s ease; }
+      @keyframes gbFadeIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+
+      .gb-lang-option {
+        display: flex; align-items: center; gap: 10px;
+        padding: 11px 16px;
+        cursor: pointer; font-size: 0.9rem; font-weight: 600;
+        color: #e2e8f0; transition: background .15s;
+        font-family: inherit; border: none; background: none;
+        width: 100%; text-align: right;
+      }
+      .gb-lang-option:hover { background: rgba(124,58,237,0.2); }
+      .gb-lang-option.active { color: #c084fc; }
+      .gb-check { margin-right: auto; color: #a855f7; }
     `;
     document.head.appendChild(s);
   }
 
+  // ── DROPDOWN LOGIC ──
+  function openDropdown(e) {
+    e.stopPropagation();
+    document.getElementById('gb-lang-wrap').classList.toggle('open');
+  }
+  document.addEventListener('click', function() {
+    const w = document.getElementById('gb-lang-wrap');
+    if (w) w.classList.remove('open');
+  });
+
+  window.gbSelectLang = function(code) {
+    apply(code);
+    const w = document.getElementById('gb-lang-wrap');
+    if (w) w.classList.remove('open');
+    document.querySelectorAll('.gb-lang-option').forEach(el => {
+      const active = el.dataset.code === code;
+      el.classList.toggle('active', active);
+      const chk = el.querySelector('.gb-check');
+      if (chk) chk.style.visibility = active ? 'visible' : 'hidden';
+    });
+  };
+
   // ── INJECT BUTTON INTO NAV ──
   function injectButton() {
-    if (document.getElementById('gb-lang-toggle')) return;
+    if (document.getElementById('gb-lang-wrap')) return;
+
+    const wrap = document.createElement('div');
+    wrap.id = 'gb-lang-wrap';
+
     const btn = document.createElement('button');
     btn.id = 'gb-lang-toggle';
-    btn.onclick = window.gbToggleLang;
-    btn.innerHTML = '<span class="gb-flag">🇺🇸</span><span class="gb-label">English</span>';
+    btn.onclick = openDropdown;
+    btn.innerHTML = '<span style="font-size:1.1rem">🌐</span><span class="gb-label">שפה</span><span class="gb-arrow">▼</span>';
 
-    // Try common nav containers
+    const dropdown = document.createElement('div');
+    dropdown.id = 'gb-lang-dropdown';
+    dropdown.innerHTML = LANGS.map(l => {
+      const isActive = l.code === (window._gbLang || 'he');
+      return `<button class="gb-lang-option${isActive ? ' active' : ''}" data-code="${l.code}" onclick="gbSelectLang('${l.code}')">
+        <span style="font-size:1.1rem">${l.flag}</span>
+        <span>${l.label}</span>
+        <span class="gb-check" style="visibility:${isActive ? 'visible' : 'hidden'}">✓</span>
+      </button>`;
+    }).join('');
+
+    wrap.appendChild(btn);
+    wrap.appendChild(dropdown);
+
     const nav = document.querySelector('nav');
-    if (nav) nav.appendChild(btn);
+    if (nav) nav.appendChild(wrap);
   }
 
   // ── INIT ──
