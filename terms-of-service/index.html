@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service / תנאי שימוש - GameBuddy</title>
+<style>
+  :root {
+    --purple: #7c3aed;
+    --purple-light: #a855f7;
+    --bg: #0a0a0f;
+    --bg2: #13131a;
+    --bg3: #1a1a24;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #2d2d3d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; line-height: 1.8; }
+
+  nav {
+    background: rgba(10,10,15,0.95);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .logo { font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, #7c3aed, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-back { color: var(--purple-light); text-decoration: none; font-size: 0.9rem; }
+  .nav-back:hover { text-decoration: underline; }
+
+  .lang-toggle {
+    display: flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(236,72,153,0.2));
+    border: 1.5px solid rgba(168,85,247,0.7);
+    border-radius: 50px; padding: 6px 14px;
+    cursor: pointer; font-size: 0.85rem; font-weight: 700;
+    color: #e2e8f0; transition: all .2s; font-family: inherit;
+    box-shadow: 0 0 12px rgba(124,58,237,0.25);
+  }
+  .lang-toggle:hover { background: linear-gradient(135deg, rgba(124,58,237,0.5), rgba(236,72,153,0.35)); border-color: #a855f7; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--bg2), var(--bg3));
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--purple-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { color: var(--text-muted); font-size: 1rem; }
+
+  .container { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
+
+  .section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .section h2 {
+    font-size: 1.2rem; font-weight: 700; color: var(--purple-light);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .section p { color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.95rem; }
+  .section ul { color: var(--text-muted); padding-right: 1.5rem; font-size: 0.95rem; }
+  .section ul li { margin-bottom: 0.5rem; }
+
+  html[dir="ltr"] .section ul { padding-right: 0; padding-left: 1.5rem; }
+
+  .last-updated { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+  footer a { color: var(--purple-light); text-decoration: none; }
+
+  .lang-he, .lang-en { display: none; }
+  .lang-he.active, .lang-en.active { display: block; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-right">
+    <span class="logo">GameBuddy</span>
+    <button class="lang-toggle" onclick="toggleLang()">
+      <span id="lang-flag">🇺🇸</span>
+      <span id="lang-label">English</span>
+    </button>
+  </div>
+  <a href="../index.html" class="nav-back" id="nav-back-link">← חזרה לעמוד הראשי</a>
+</nav>
+
+<!-- HEBREW -->
+<div class="lang-he active" id="content-he">
+  <div class="hero">
+    <h1>תנאי שימוש</h1>
+    <p>אנא קראו בעיון לפני השימוש בפלטפורמה</p>
+  </div>
+  <div class="container">
+
+    <div class="section">
+      <h2>📋 קבלת התנאים</h2>
+      <p>השימוש בפלטפורמת GameBuddy מהווה הסכמה מלאה לתנאי שימוש אלו. אם אינכם מסכימים לתנאים, אנא הפסיקו את השימוש באתר.</p>
+      <p>GameBuddy שומרת לעצמה את הזכות לעדכן תנאים אלו בכל עת. שינויים מהותיים יפורסמו באתר.</p>
+    </div>
+
+    <div class="section">
+      <h2>👤 רישום וחשבון משתמש</h2>
+      <ul>
+        <li>עליכם להיות בני 13 ומעלה כדי להירשם לפלטפורמה.</li>
+        <li>עליכם לספק מידע מדויק ואמיתי בעת ההרשמה.</li>
+        <li>אתם אחראים על שמירת סיסמתכם בסוד ועל כל פעילות שתתבצע תחת חשבונכם.</li>
+        <li>GameBuddy שומרת לעצמה את הזכות להשעות או למחוק חשבונות המפרים את התנאים.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎮 כללי שימוש בפלטפורמה</h2>
+      <p>בעת השימוש בפלטפורמה, אתם מתחייבים:</p>
+      <ul>
+        <li>לא להציג מידע כוזב אודות רמת המשחק שלכם.</li>
+        <li>לא להטריד, לאיים או להעליב משתמשים אחרים.</li>
+        <li>לא להשתמש בפלטפורמה למטרות מסחריות ללא אישור.</li>
+        <li>לא לנסות לפרוץ, לפגוע, או לשבש את פעילות האתר.</li>
+        <li>לא לפרסם תוכן פוגעני, גזעני, או בלתי חוקי.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🏆 פרסים ותחרויות</h2>
+      <ul>
+        <li>הפרסים המוצעים דרך GameBuddy כפופים לזמינות ולתנאים שנקבעו על ידי Epic Games.</li>
+        <li>GameBuddy אינה מתחייבת לזמינות פרסים ספציפיים בכל עת.</li>
+        <li>ניצול לרעה של מערכת הפרסים עלול לגרור השעיית חשבון.</li>
+        <li>פרסים אינם ניתנים להמרה למזומן.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔗 קשר עם Epic Games</h2>
+      <p>GameBuddy היא פלטפורמה עצמאית ואינה קשורה, מאושרת, או ממומנת על ידי Epic Games. שמות מסחריים, סימני מסחר, ותוכן של Epic Games הם קניינה של Epic Games.</p>
+    </div>
+
+    <div class="section">
+      <h2>📊 שירות API</h2>
+      <p>GameBuddy משתמשת ב-API ציבורי לשליפת נתוני משחק. אנו לא אחראים על אי-דיוקים בנתונים הנובעים מצד שלישי.</p>
+      <p>Epic Games עשויה לשנות או להפסיק את ה-API בכל עת, מה שעלול להשפיע על פעילות הפלטפורמה.</p>
+    </div>
+
+    <div class="section">
+      <h2>⚖️ הגבלת אחריות</h2>
+      <p>GameBuddy מסופקת "כפי שהיא" (AS IS) ללא אחריות מכל סוג. אנחנו לא אחראים לנזקים ישירים או עקיפים הנובעים מהשימוש בפלטפורמה.</p>
+      <p>GameBuddy אינה אחראית לתכנים שמפרסמים משתמשים, או לאיכות חוויית המשחק עם שחקנים אחרים.</p>
+    </div>
+
+    <div class="section">
+      <h2>📝 קניין רוחני</h2>
+      <p>כל התכנים המקוריים של GameBuddy — כולל עיצוב, לוגו, וקוד — הם רכושה הבלעדי של GameBuddy. אין להעתיק, לשכפל, או להפיץ תכנים אלו ללא אישור כתוב מראש.</p>
+    </div>
+
+    <div class="section">
+      <h2>📬 יצירת קשר</h2>
+      <p>לשאלות בנוגע לתנאי השימוש, פנו אלינו בכתובת: <strong>support@gamebuddy.co.il</strong></p>
+    </div>
+
+    <div class="last-updated">עודכן לאחרונה: מאי 2026</div>
+  </div>
+</div>
+
+<!-- ENGLISH -->
+<div class="lang-en" id="content-en">
+  <div class="hero">
+    <h1>Terms of Service</h1>
+    <p>Please read carefully before using the platform</p>
+  </div>
+  <div class="container">
+
+    <div class="section">
+      <h2>📋 Acceptance of Terms</h2>
+      <p>By using the GameBuddy platform, you fully agree to these Terms of Service. If you do not agree, please discontinue use of the site.</p>
+      <p>GameBuddy reserves the right to update these terms at any time. Material changes will be posted on the site.</p>
+    </div>
+
+    <div class="section">
+      <h2>👤 Registration & Account</h2>
+      <ul>
+        <li>You must be at least 13 years old to register on the platform.</li>
+        <li>You must provide accurate and truthful information when registering.</li>
+        <li>You are responsible for keeping your password confidential and for all activity under your account.</li>
+        <li>GameBuddy reserves the right to suspend or delete accounts that violate these terms.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎮 Platform Usage Rules</h2>
+      <p>When using the platform, you agree to:</p>
+      <ul>
+        <li>Not misrepresent your skill level.</li>
+        <li>Not harass, threaten, or insult other users.</li>
+        <li>Not use the platform for commercial purposes without authorization.</li>
+        <li>Not attempt to hack, damage, or disrupt the site's operation.</li>
+        <li>Not post offensive, racist, or illegal content.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🏆 Prizes & Competitions</h2>
+      <ul>
+        <li>Prizes offered through GameBuddy are subject to availability and terms set by Epic Games.</li>
+        <li>GameBuddy does not guarantee the availability of specific prizes at any time.</li>
+        <li>Abuse of the prize system may result in account suspension.</li>
+        <li>Prizes cannot be exchanged for cash.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔗 Relationship with Epic Games</h2>
+      <p>GameBuddy is an independent platform and is not affiliated with, endorsed by, or sponsored by Epic Games. Epic Games trademarks, trade names, and content are the property of Epic Games.</p>
+    </div>
+
+    <div class="section">
+      <h2>📊 API Service</h2>
+      <p>GameBuddy uses a public API to retrieve game data. We are not responsible for inaccuracies in data originating from third parties.</p>
+      <p>Epic Games may modify or discontinue the API at any time, which may affect platform functionality.</p>
+    </div>
+
+    <div class="section">
+      <h2>⚖️ Limitation of Liability</h2>
+      <p>GameBuddy is provided "AS IS" without warranty of any kind. We are not liable for direct or indirect damages arising from use of the platform.</p>
+      <p>GameBuddy is not responsible for user-generated content or the quality of gaming experiences with other players.</p>
+    </div>
+
+    <div class="section">
+      <h2>📝 Intellectual Property</h2>
+      <p>All original content on GameBuddy — including design, logo, and code — is the exclusive property of GameBuddy. Copying, reproducing, or distributing this content without prior written permission is prohibited.</p>
+    </div>
+
+    <div class="section">
+      <h2>📬 Contact Us</h2>
+      <p>For questions regarding these Terms of Service, contact us at: <strong>support@gamebuddy.co.il</strong></p>
+    </div>
+
+    <div class="last-updated">Last updated: May 2026</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 GameBuddy. All rights reserved. | <a href="../index.html">Home</a> | <a href="../privacy-policy/index.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+  let currentLang = localStorage.getItem('gb_lang') || 'he';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('gb_lang', lang);
+    const isEn = lang === 'en';
+    document.getElementById('html-root').setAttribute('lang', isEn ? 'en' : 'he');
+    document.getElementById('html-root').setAttribute('dir', isEn ? 'ltr' : 'rtl');
+    document.getElementById('content-he').classList.toggle('active', !isEn);
+    document.getElementById('content-en').classList.toggle('active', isEn);
+    document.getElementById('lang-flag').textContent = isEn ? '🇮🇱' : '🇺🇸';
+    document.getElementById('lang-label').textContent = isEn ? 'עברית' : 'English';
+    document.getElementById('nav-back-link').textContent = isEn ? '← Back to Home' : '← חזרה לעמוד הראשי';
+  }
+
+  function toggleLang() {
+    applyLang(currentLang === 'he' ? 'en' : 'he');
+  }
+
+  applyLang(currentLang);
+</script>
+
+</body>
+</html>
