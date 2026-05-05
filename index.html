@@ -881,10 +881,10 @@
 <nav>
   <div class="nav-logo">GameBuddy</div>
   <ul class="nav-links">
-    <li><a href="#features">יכולות</a></li>
-    <li><a href="#why">למה אנחנו</a></li>
-    <li><a href="#pricing">מחירים</a></li>
-    <li><a href="#" class="nav-cta" onclick="openLogin();return false;">כניסה</a></li>
+    <li><a href="#features" data-i18n="nav.features">יכולות</a></li>
+    <li><a href="#why" data-i18n="nav.why">למה אנחנו</a></li>
+    <li><a href="#pricing" data-i18n="nav.pricing">מחירים</a></li>
+    <li><a href="#" class="nav-cta" onclick="openLogin();return false;" data-i18n="nav.login">כניסה</a></li>
   </ul>
   <div class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()">
     <span></span><span></span><span></span>
@@ -893,10 +893,10 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#features" onclick="closeMobileMenu()">יכולות</a>
-  <a href="#why" onclick="closeMobileMenu()">למה אנחנו</a>
-  <a href="#pricing" onclick="closeMobileMenu()">מחירים</a>
-  <a href="#" class="nav-cta" onclick="closeMobileMenu();openLogin();">כניסה →</a>
+  <a href="#features" onclick="closeMobileMenu()" data-i18n="nav.features">יכולות</a>
+  <a href="#why" onclick="closeMobileMenu()" data-i18n="nav.why">למה אנחנו</a>
+  <a href="#pricing" onclick="closeMobileMenu()" data-i18n="nav.pricing">מחירים</a>
+  <a href="#" class="nav-cta" onclick="closeMobileMenu();openLogin();" data-i18n="nav.login.arrow">כניסה →</a>
 </div>
 
 <!-- ─── HERO ─── -->
@@ -906,33 +906,26 @@
   <div class="blob blob-3"></div>
 
   <div class="hero-content">
-    <div class="hero-badge">הפלטפורמה מספר 1 לשחקני פורטנייט בישראל</div>
-    <h1>
-      תמצא את<br />
-      <span class="gradient-text">שותף המשחק</span><br />
-      המושלם שלך
-    </h1>
-    <p class="hero-sub">
-      נמאס לך מ-Solo Queue עם שחקנים שמורידים לך את הרמה?
-      GameBuddy מחבר אותך לשחקנים ישראלים ברמה שלך — ועם הזדמנות לזכות בפרסים בתוך המשחק.
-    </p>
+    <div class="hero-badge" data-i18n="hero.badge">הפלטפורמה מספר 1 לשחקני פורטנייט בישראל</div>
+    <h1 data-i18n="hero.h1">תמצא את<br /><span class="gradient-text">שותף המשחק</span><br />המושלם שלך</h1>
+    <p class="hero-sub" data-i18n="hero.sub">נמאס לך מ-Solo Queue עם שחקנים שמורידים לך את הרמה? GameBuddy מחבר אותך לשחקנים ישראלים ברמה שלך — ועם הזדמנות לזכות בפרסים בתוך המשחק.</p>
     <div class="hero-ctas">
-      <button class="btn-primary" onclick="openSignup()">הצטרפו בחינם →</button>
-      <a href="#features" class="btn-secondary">גלה איך זה עובד</a>
+      <button class="btn-primary" onclick="openSignup()" data-i18n="hero.btn.primary">הצטרפו בחינם →</button>
+      <a href="#features" class="btn-secondary" data-i18n="hero.btn.secondary">גלה איך זה עובד</a>
     </div>
 
     <div class="hero-stats">
       <div class="stat">
         <div class="stat-num">🇮🇱</div>
-        <div class="stat-label">מותאם לישראל</div>
+        <div class="stat-label" data-i18n="hero.stat1">מותאם לישראל</div>
       </div>
       <div class="stat">
         <div class="stat-num">API</div>
-        <div class="stat-label">מיתוח לפי רמה אמיתית</div>
+        <div class="stat-label" data-i18n="hero.stat2">מיתוח לפי רמה אמיתית</div>
       </div>
       <div class="stat">
         <div class="stat-num">🏆</div>
-        <div class="stat-label">פרסים בתוך המשחק</div>
+        <div class="stat-label" data-i18n="hero.stat3">פרסים בתוך המשחק</div>
       </div>
     </div>
   </div>
@@ -942,35 +935,24 @@
 <section class="problem-section">
   <div class="container">
     <div style="text-align:center;" class="fade-up">
-      <div class="section-tag">הבעיה והפתרון</div>
-      <h2 class="section-title">Solo Queue שבור.<br />אנחנו כאן לתקן אותו.</h2>
-      <p class="section-sub" style="margin:0 auto;">
-        כל שחקן רציני מכיר את הכאב — אתה ברמה גבוהה, אבל תמיד מוצמד לשחקנים שמורידים לך את הביצועים.
-      </p>
+      <div class="section-tag" data-i18n="ps.tag">הבעיה והפתרון</div>
+      <h2 class="section-title" data-i18n="ps.title">Solo Queue שבור.<br />אנחנו כאן לתקן אותו.</h2>
+      <p class="section-sub" style="margin:0 auto;" data-i18n="ps.sub">כל שחקן רציני מכיר את הכאב — אתה ברמה גבוהה, אבל תמיד מוצמד לשחקנים שמורידים לך את הביצועים.</p>
     </div>
 
     <div class="ps-grid fade-up" style="position:relative;">
       <div class="ps-card problem">
         <div class="ps-icon">😤</div>
-        <h3>הבעיה הנוכחית</h3>
-        <p>
-          ב-Solo Queue של פורטנייט, אתה לא שולט על מי הקבוצה שלך.
-          שחקנים ברמות שונות מוצמדים יחד ויוצרים חוויה מתסכלת — וסיכוי נמוך יותר לנצח.
-          <br /><br />
-          <strong style="color:#f87171;">המתחרים</strong> ניסו לפתור את זה, אבל מאגר השחקנים שלהם מצומצם מדי ולא ממוקד בישראל.
-        </p>
+        <h3 data-i18n="ps.problem.h3">הבעיה הנוכחית</h3>
+        <p data-i18n="ps.problem.p">ב-Solo Queue של פורטנייט, אתה לא שולט על מי הקבוצה שלך. שחקנים ברמות שונות מוצמדים יחד ויוצרים חוויה מתסכלת — וסיכוי נמוך יותר לנצח.<br /><br /><strong style="color:#f87171;">המתחרים</strong> ניסו לפתור את זה, אבל מאגר השחקנים שלהם מצומצם מדי ולא ממוקד בישראל.</p>
       </div>
 
       <div class="vs-badge">VS</div>
 
       <div class="ps-card solution">
         <div class="ps-icon">🚀</div>
-        <h3>הפתרון שלנו</h3>
-        <p>
-          GameBuddy בונה מאגר שחקנים <strong style="color:#c084fc;">ממוקד ישראל</strong> — שחקנים שנרשמו, אומתו לפי API, וניתן לסנן לפי רמה אמיתית.
-          <br /><br />
-          כך תוכל <strong style="color:#c084fc;">לבחור עם מי לשחק</strong> לפני שאתה נכנס לגיים — ולזכות בפרסים בדרך.
-        </p>
+        <h3 data-i18n="ps.solution.h3">הפתרון שלנו</h3>
+        <p data-i18n="ps.solution.p">GameBuddy בונה מאגר שחקנים <strong style="color:#c084fc;">ממוקד ישראל</strong> — שחקנים שנרשמו, אומתו לפי API, וניתן לסנן לפי רמה אמיתית.<br /><br />כך תוכל <strong style="color:#c084fc;">לבחור עם מי לשחק</strong> לפני שאתה נכנס לגיים — ולזכות בפרסים בדרך.</p>
       </div>
     </div>
   </div>
@@ -980,30 +962,30 @@
 <section id="features">
   <div class="container">
     <div class="fade-up" style="text-align:center;">
-      <div class="section-tag">יכולות עיקריות</div>
-      <h2 class="section-title">כל מה שצריך<br />כדי לשחק טוב יותר</h2>
+      <div class="section-tag" data-i18n="feat.tag">יכולות עיקריות</div>
+      <h2 class="section-title" data-i18n="feat.title">כל מה שצריך<br />כדי לשחק טוב יותר</h2>
     </div>
 
     <div class="features-grid">
       <div class="feature-card fade-up">
         <div class="feature-icon">🔍</div>
-        <h3>חיפוש שחקנים לפי רמה</h3>
-        <p>מחוברים ל-API הרשמי של פורטנייט — כל שחקן מאומת לפי הסטטיסטיקות האמיתיות שלו. מצא שחקנים בדיוק ברמה שלך.</p>
+        <h3 data-i18n="feat1.h3">חיפוש שחקנים לפי רמה</h3>
+        <p data-i18n="feat1.p">מחוברים ל-API הרשמי של פורטנייט — כל שחקן מאומת לפי הסטטיסטיקות האמיתיות שלו. מצא שחקנים בדיוק ברמה שלך.</p>
       </div>
       <div class="feature-card fade-up">
         <div class="feature-icon">🏆</div>
-        <h3>פרסים בתוך המשחק</h3>
-        <p>שחקנים שמשתמשים ב-GameBuddy ומנצחים יחד זכאים לפרסים אקסקלוסיביים בתוך פורטנייט. תשחקו ותרוויחו.</p>
+        <h3 data-i18n="feat2.h3">פרסים בתוך המשחק</h3>
+        <p data-i18n="feat2.p">שחקנים שמשתמשים ב-GameBuddy ומנצחים יחד זכאים לפרסים אקסקלוסיביים בתוך פורטנייט. תשחקו ותרוויחו.</p>
       </div>
       <div class="feature-card fade-up">
         <div class="feature-icon">👤</div>
-        <h3>פרופיל אישי מלא</h3>
-        <p>אזור אישי מתקדם — הסטטיסטיקות שלך, הסגנון שלך, הזמינות שלך. הוסף מידע ותן לשחקנים אחרים להכיר אותך.</p>
+        <h3 data-i18n="feat3.h3">פרופיל אישי מלא</h3>
+        <p data-i18n="feat3.p">אזור אישי מתקדם — הסטטיסטיקות שלך, הסגנון שלך, הזמינות שלך. הוסף מידע ותן לשחקנים אחרים להכיר אותך.</p>
       </div>
       <div class="feature-card fade-up">
         <div class="feature-icon">💬</div>
-        <h3>הודעות ישירות</h3>
-        <p>דברו לפני שאתם משחקים. הכירו אחד את השני, תאמו אסטרטגיה, וכנסו לגיים מוכנים ומסונכרנים.</p>
+        <h3 data-i18n="feat4.h3">הודעות ישירות</h3>
+        <p data-i18n="feat4.p">דברו לפני שאתם משחקים. הכירו אחד את השני, תאמו אסטרטגיה, וכנסו לגיים מוכנים ומסונכרנים.</p>
       </div>
     </div>
   </div>
@@ -1014,32 +996,29 @@
   <div class="container">
     <div class="why-grid">
       <div class="fade-up">
-        <div class="section-tag">למה GameBuddy</div>
-        <h2 class="section-title">אנחנו לא כמו המתחרים</h2>
-        <p class="section-sub" style="margin-bottom:32px;">
-          המתחרים שלנו הצליחו להכנס לשוק אבל לא לפתור את הבעיה האמיתית.
-          אנחנו ממוקדים בישראל, ונבנה את המאגר הנכון.
-        </p>
+        <div class="section-tag" data-i18n="why.tag">למה GameBuddy</div>
+        <h2 class="section-title" data-i18n="why.title">אנחנו לא כמו המתחרים</h2>
+        <p class="section-sub" style="margin-bottom:32px;" data-i18n="why.sub">המתחרים שלנו הצליחו להכנס לשוק אבל לא לפתור את הבעיה האמיתית. אנחנו ממוקדים בישראל, ונבנה את המאגר הנכון.</p>
         <div class="why-points">
           <div class="why-point">
             <div class="why-point-icon">🎯</div>
             <div class="why-point-text">
-              <h4>ממוקד ישראל</h4>
-              <p>שפה, קהילה, שרתים — הכל מותאם לשחקן הישראלי. לא עוד שחקנים אקראיים מחו"ל.</p>
+              <h4 data-i18n="why1.h4">ממוקד ישראל</h4>
+              <p data-i18n="why1.p">שפה, קהילה, שרתים — הכל מותאם לשחקן הישראלי. לא עוד שחקנים אקראיים מחו"ל.</p>
             </div>
           </div>
           <div class="why-point">
             <div class="why-point-icon">📊</div>
             <div class="why-point-text">
-              <h4>מיתוח לפי נתונים אמיתיים</h4>
-              <p>לא על סמך הצהרה עצמית — אלא על פי ה-API הרשמי של פורטנייט.</p>
+              <h4 data-i18n="why2.h4">מיתוח לפי נתונים אמיתיים</h4>
+              <p data-i18n="why2.p">לא על סמך הצהרה עצמית — אלא על פי ה-API הרשמי של פורטנייט.</p>
             </div>
           </div>
           <div class="why-point">
             <div class="why-point-icon">🎁</div>
             <div class="why-point-text">
-              <h4>פרסים שמניעים שחקנים</h4>
-              <p>אינסנטיב אמיתי להשתמש בפלטפורמה — פרסים בתוך המשחק שכל שחקן רוצה.</p>
+              <h4 data-i18n="why3.h4">פרסים שמניעים שחקנים</h4>
+              <p data-i18n="why3.p">אינסנטיב אמיתי להשתמש בפלטפורמה — פרסים בתוך המשחק שכל שחקן רוצה.</p>
             </div>
           </div>
         </div>
@@ -1047,37 +1026,37 @@
 
       <div class="compare-table fade-up">
         <div class="compare-row header">
-          <span>יכולת</span>
+          <span data-i18n="cmp.feature">יכולת</span>
           <span style="text-align:center;">GameBuddy</span>
-          <span style="text-align:center;">המתחרים</span>
+          <span style="text-align:center;" data-i18n="cmp.competitors">המתחרים</span>
         </div>
         <div class="compare-row">
-          <span>מיתוח ב-API</span>
+          <span data-i18n="cmp.api">מיתוח ב-API</span>
           <span style="text-align:center;" class="check">✓</span>
           <span style="text-align:center;" class="cross">✗</span>
         </div>
         <div class="compare-row">
-          <span>מאגר ישראלי</span>
+          <span data-i18n="cmp.israeli">מאגר ישראלי</span>
           <span style="text-align:center;" class="check">✓</span>
           <span style="text-align:center;" class="partial">~</span>
         </div>
         <div class="compare-row">
-          <span>פרסים במשחק</span>
+          <span data-i18n="cmp.prizes">פרסים במשחק</span>
           <span style="text-align:center;" class="check">✓</span>
           <span style="text-align:center;" class="cross">✗</span>
         </div>
         <div class="compare-row">
-          <span>הודעות ישירות</span>
+          <span data-i18n="cmp.messages">הודעות ישירות</span>
           <span style="text-align:center;" class="check">✓</span>
           <span style="text-align:center;" class="partial">~</span>
         </div>
         <div class="compare-row">
-          <span>פרופיל מפורט</span>
+          <span data-i18n="cmp.profile">פרופיל מפורט</span>
           <span style="text-align:center;" class="check">✓</span>
           <span style="text-align:center;" class="cross">✗</span>
         </div>
         <div class="compare-row">
-          <span>בעברית מלאה</span>
+          <span data-i18n="cmp.hebrew">בעברית מלאה</span>
           <span style="text-align:center;" class="check">✓</span>
           <span style="text-align:center;" class="cross">✗</span>
         </div>
@@ -1090,57 +1069,54 @@
 <section id="pricing">
   <div class="container" style="text-align:center;">
     <div class="fade-up">
-      <div class="section-tag">מחירים</div>
-      <h2 class="section-title">בחרו את התוכנית המתאימה לכם</h2>
-      <p class="section-sub" style="margin:0 auto 0;">
-        התחילו בחינם. שדרגו כשאתם מוכנים.
-        מנוי שנתי עם <strong style="color:#4ade80;">10% הנחה</strong>.
-      </p>
+      <div class="section-tag" data-i18n="price.tag">מחירים</div>
+      <h2 class="section-title" data-i18n="price.title">בחרו את התוכנית המתאימה לכם</h2>
+      <p class="section-sub" style="margin:0 auto 0;" data-i18n="price.sub">התחילו בחינם. שדרגו כשאתם מוכנים. מנוי שנתי עם <strong style="color:#4ade80;">10% הנחה</strong>.</p>
     </div>
 
     <div class="pricing-toggle fade-up">
-      <span class="toggle-label active" id="monthly-label">חודשי</span>
+      <span class="toggle-label active" id="monthly-label" data-i18n="price.monthly">חודשי</span>
       <button class="toggle" id="billing-toggle" onclick="toggleBilling()"></button>
-      <span class="toggle-label" id="annual-label">שנתי</span>
-      <span class="discount-badge">חסכו 10%</span>
+      <span class="toggle-label" id="annual-label" data-i18n="price.annual">שנתי</span>
+      <span class="discount-badge" data-i18n="price.save">חסכו 10%</span>
     </div>
 
     <div class="pricing-grid fade-up">
       <div class="pricing-card">
-        <div class="plan-name">חינמי</div>
+        <div class="plan-name" data-i18n="price.free.name">חינמי</div>
         <div class="plan-price">₪0</div>
-        <div class="plan-period">לתמיד</div>
+        <div class="plan-period" data-i18n="price.free.period">לתמיד</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span> גישה למאגר שחקנים</li>
-          <li><span class="check">✓</span> פרופיל אישי בסיסי</li>
-          <li><span class="check">✓</span> חיפוש בסיסי לפי רמה</li>
-          <li><span class="check">✓</span> פרסים בסיסיים במשחק</li>
-          <li><span class="check">✓</span> הודעות ישירות</li>
-          <li><span style="color:var(--muted)">✗</span> פרופיל מורחב</li>
-          <li><span style="color:var(--muted)">✗</span> סינון מתקדם</li>
-          <li><span style="color:var(--muted)">✗</span> התראות בזמן אמת</li>
-          <li><span style="color:var(--muted)">✗</span> היסטוריית משחקים</li>
+          <li><span class="check">✓</span> <span data-i18n="price.free.f1">גישה למאגר שחקנים</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.free.f2">פרופיל אישי בסיסי</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.free.f3">חיפוש בסיסי לפי רמה</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.free.f4">פרסים בסיסיים במשחק</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.free.f5">הודעות ישירות</span></li>
+          <li><span style="color:var(--muted)">✗</span> <span data-i18n="price.free.x1">פרופיל מורחב</span></li>
+          <li><span style="color:var(--muted)">✗</span> <span data-i18n="price.free.x2">סינון מתקדם</span></li>
+          <li><span style="color:var(--muted)">✗</span> <span data-i18n="price.free.x3">התראות בזמן אמת</span></li>
+          <li><span style="color:var(--muted)">✗</span> <span data-i18n="price.free.x4">היסטוריית משחקים</span></li>
         </ul>
-        <a href="#cta" class="btn-secondary" style="display:block;text-align:center;">התחילו בחינם</a>
+        <a href="#cta" class="btn-secondary" style="display:block;text-align:center;" data-i18n="price.free.btn">התחילו בחינם</a>
       </div>
 
       <div class="pricing-card popular">
-        <div class="popular-badge">⭐ הכי פופולרי</div>
-        <div class="plan-name">פרימיום</div>
-        <div class="plan-price premium" id="price-display">בקרוב</div>
-        <div class="plan-period" id="period-display">מחיר יוכרז בקרוב</div>
+        <div class="popular-badge" data-i18n="price.premium.badge">⭐ הכי פופולרי</div>
+        <div class="plan-name" data-i18n="price.premium.name">פרימיום</div>
+        <div class="plan-price premium" id="price-display" data-i18n="price.premium.display">בקרוב</div>
+        <div class="plan-period" id="period-display" data-i18n="price.premium.period">מחיר יוכרז בקרוב</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span> כל מה שבחינמי</li>
-          <li><span class="check">✓</span> פרסים פרימיום — שווים יותר 🔥</li>
-          <li><span class="check">✓</span> הודעות ישירות ללא הגבלה + העדפה בתור</li>
-          <li><span class="check">✓</span> פרופיל מורחב + בדג' פרימיום</li>
-          <li><span class="check">✓</span> עדיפות בחיפוש — מופיע ראשון</li>
-          <li><span class="check">✓</span> סינון מתקדם (KD, Win Rate, שעות)</li>
-          <li><span class="check">✓</span> התראות בזמן אמת</li>
-          <li><span class="check">✓</span> היסטוריית משחקים</li>
-          <li><span class="check">✓</span> תמיכה מועדפת</li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f1">כל מה שבחינמי</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f2">פרסים פרימיום — שווים יותר 🔥</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f3">הודעות ישירות ללא הגבלה + העדפה בתור</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f4">פרופיל מורחב + בדג' פרימיום</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f5">עדיפות בחיפוש — מופיע ראשון</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f6">סינון מתקדם (KD, Win Rate, שעות)</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f7">התראות בזמן אמת</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f8">היסטוריית משחקים</span></li>
+          <li><span class="check">✓</span> <span data-i18n="price.premium.f9">תמיכה מועדפת</span></li>
         </ul>
-        <a href="#cta" class="btn-primary" style="display:block;text-align:center;">הירשמו לרשימת המתנה →</a>
+        <a href="#cta" class="btn-primary" style="display:block;text-align:center;" data-i18n="price.premium.btn">הירשמו לרשימת המתנה →</a>
       </div>
     </div>
 
@@ -1155,12 +1131,10 @@
 <section id="cta" class="cta-section">
   <div class="cta-bg"></div>
   <div class="container fade-up" style="position:relative;text-align:center;">
-    <div class="section-tag">גישה מוקדמת</div>
-    <h2 class="section-title">הצטרפו לבטא של GameBuddy</h2>
-    <p class="section-sub" style="max-width:500px;margin:0 auto 36px;">
-      היו מהראשונים לקבל גישה לדאשבורד המלא — בחינם, בלי כרטיס אשראי.
-    </p>
-    <button class="btn-primary" onclick="openSignup()">הצטרפו עכשיו — בחינם 🎮</button>
+    <div class="section-tag" data-i18n="cta.tag">גישה מוקדמת</div>
+    <h2 class="section-title" data-i18n="cta.title">הצטרפו לבטא של GameBuddy</h2>
+    <p class="section-sub" style="max-width:500px;margin:0 auto 36px;" data-i18n="cta.sub">היו מהראשונים לקבל גישה לדאשבורד המלא — בחינם, בלי כרטיס אשראי.</p>
+    <button class="btn-primary" onclick="openSignup()" data-i18n="cta.btn">הצטרפו עכשיו — בחינם 🎮</button>
   </div>
 </section>
 
@@ -1171,38 +1145,38 @@
 
   <!-- Form -->
   <div id="signup-form-wrap">
-    <div class="beta-tag">🚀 דאשבורד בטא — גישה מוקדמת</div>
-    <h3>יצירת חשבון חינמי</h3>
-    <p>מלאו פרטים ותקבלו גישה מיידית לדאשבורד</p>
+    <div class="beta-tag" data-i18n="signup.beta">🚀 דאשבורד בטא — גישה מוקדמת</div>
+    <h3 data-i18n="signup.title">יצירת חשבון חינמי</h3>
+    <p data-i18n="signup.sub">מלאו פרטים ותקבלו גישה מיידית לדאשבורד</p>
 
     <form id="signup-form" onsubmit="handleSignup(event)">
       <div class="signup-row">
         <div class="signup-field">
-          <label>שם פרטי</label>
+          <label data-i18n="signup.fname">שם פרטי</label>
           <input type="text" placeholder="אבינועם" required />
         </div>
         <div class="signup-field">
-          <label>שם משפחה</label>
+          <label data-i18n="signup.lname">שם משפחה</label>
           <input type="text" placeholder="כהן" required />
         </div>
       </div>
       <div class="signup-field">
-        <label>כתובת מייל</label>
+        <label data-i18n="signup.email">כתובת מייל</label>
         <input type="email" placeholder="you@example.com" required />
       </div>
       <div class="signup-row">
         <div class="signup-field">
-          <label>סיסמא</label>
+          <label data-i18n="signup.pass">סיסמא</label>
           <input type="password" placeholder="לפחות 8 תווים" required minlength="8" />
         </div>
         <div class="signup-field">
-          <label>אימות סיסמא</label>
+          <label data-i18n="signup.confirm">אימות סיסמא</label>
           <input type="password" placeholder="הכנס שוב" required minlength="8" id="confirm-pass" />
         </div>
       </div>
       <div class="signup-row">
         <div class="signup-field">
-          <label>רמה נוכחית</label>
+          <label data-i18n="signup.rank">רמה נוכחית</label>
           <select required>
             <option value="" disabled selected>בחר רמה</option>
             <option>Bronze</option>
@@ -1216,7 +1190,7 @@
           </select>
         </div>
         <div class="signup-field">
-          <label>סגנון משחק</label>
+          <label data-i18n="signup.style">סגנון משחק</label>
           <select required>
             <option value="" disabled selected>בחר סגנון</option>
             <option>אגרסיבי</option>
@@ -1226,19 +1200,17 @@
           </select>
         </div>
       </div>
-      <button type="submit" class="signup-submit">הצטרפו לבטא — בחינם 🎮</button>
+      <button type="submit" class="signup-submit" data-i18n="signup.btn">הצטרפו לבטא — בחינם 🎮</button>
     </form>
-    <p class="signup-terms">בלחיצה על הכפתור אתם מסכימים לתנאי השימוש ומדיניות הפרטיות</p>
+    <p class="signup-terms" data-i18n="signup.terms">בלחיצה על הכפתור אתם מסכימים לתנאי השימוש ומדיניות הפרטיות</p>
   </div>
 
   <!-- Success State -->
   <div class="signup-success" id="signup-success">
     <div class="success-icon">🎉</div>
-    <h4>ברוכים הבאים ל-GameBuddy!</h4>
-    <p>החשבון שלך נוצר בהצלחה. לחצו להיכנס לדאשבורד</p>
-    <a href="dashboard.html" class="btn-primary" style="display:inline-block;">
-      כניסה לדאשבורד →
-    </a>
+    <h4 data-i18n="signup.success.title">ברוכים הבאים ל-GameBuddy!</h4>
+    <p data-i18n="signup.success.sub">החשבון שלך נוצר בהצלחה. לחצו להיכנס לדאשבורד</p>
+    <a href="dashboard.html" class="btn-primary" style="display:inline-block;" data-i18n="signup.success.btn">כניסה לדאשבורד →</a>
   </div>
 </div>
 
@@ -1247,21 +1219,21 @@
 <div class="modal" id="login-modal">
   <button class="modal-close" onclick="closeLogin()">✕</button>
   <div class="beta-tag">🎮 GameBuddy</div>
-  <h3>כניסה לחשבון</h3>
-  <p>הכנס אימייל וסיסמא להתחברות</p>
+  <h3 data-i18n="login.title">כניסה לחשבון</h3>
+  <p data-i18n="login.sub">הכנס אימייל וסיסמא להתחברות</p>
   <form onsubmit="handleLogin(event)">
     <div class="signup-field">
-      <label>כתובת מייל</label>
+      <label data-i18n="login.email">כתובת מייל</label>
       <input type="email" placeholder="you@example.com" required />
     </div>
     <div class="signup-field">
-      <label>סיסמא</label>
+      <label data-i18n="login.pass">סיסמא</label>
       <input type="password" placeholder="הסיסמא שלך" required />
     </div>
-    <button type="submit" class="signup-submit">כניסה לדאשבורד →</button>
+    <button type="submit" class="signup-submit" data-i18n="login.btn">כניסה לדאשבורד →</button>
   </form>
   <p class="signup-terms" style="margin-top:16px;">
-    אין לך חשבון? <a href="#" onclick="closeLogin();openSignup();return false;" style="color:#c084fc;font-weight:700;">הצטרפו בחינם</a>
+    <span data-i18n="login.noaccount">אין לך חשבון?</span> <a href="#" onclick="closeLogin();openSignup();return false;" style="color:#c084fc;font-weight:700;" data-i18n="login.register">הצטרפו בחינם</a>
   </p>
 </div>
 
@@ -1270,18 +1242,18 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="nav-logo">GameBuddy</div>
-      <p>הפלטפורמה הישראלית למציאת שותפי משחק בפורטנייט — לפי רמה, לפי בחירה שלך.</p>
+      <p data-i18n="footer.brand">הפלטפורמה הישראלית למציאת שותפי משחק בפורטנייט — לפי רמה, לפי בחירה שלך.</p>
     </div>
     <div class="footer-col">
-      <h4>פלטפורמה</h4>
+      <h4 data-i18n="footer.platform">פלטפורמה</h4>
       <ul>
-        <li><a href="#features">יכולות</a></li>
-        <li><a href="#pricing">מחירים</a></li>
-            <li><a href="#cta">הצטרפו</a></li>
+        <li><a href="#features" data-i18n="footer.features">יכולות</a></li>
+        <li><a href="#pricing" data-i18n="footer.pricing">מחירים</a></li>
+        <li><a href="#cta" data-i18n="footer.join">הצטרפו</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>צרו קשר</h4>
+      <h4 data-i18n="footer.contact">צרו קשר</h4>
       <ul>
         <li><a href="#">Discord</a></li>
         <li><a href="#">Instagram</a></li>
@@ -1290,16 +1262,16 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h4>משפטי</h4>
+      <h4 data-i18n="footer.legal">משפטי</h4>
       <ul>
-        <li><a href="/privacy-policy">מדיניות פרטיות</a></li>
-        <li><a href="#">תנאי שימוש</a></li>
+        <li><a href="/privacy-policy" data-i18n="footer.privacy">מדיניות פרטיות</a></li>
+        <li><a href="#" data-i18n="footer.terms">תנאי שימוש</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 GameBuddy. כל הזכויות שמורות.</span>
-    <span>עוצב ונבנה בישראל 🇮🇱</span>
+    <span data-i18n="footer.copy">© 2026 GameBuddy. כל הזכויות שמורות.</span>
+    <span data-i18n="footer.made">עוצב ונבנה בישראל 🇮🇱</span>
   </div>
 </footer>
 
@@ -1632,5 +1604,6 @@
   `;
   document.head.appendChild(s);
 </script>
+  <script src="/lang.js"></script>
 </body>
 </html>
