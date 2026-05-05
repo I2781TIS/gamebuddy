@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>מדיניות פרטיות - GameBuddy</title>
+<title>Privacy Policy / מדיניות פרטיות - GameBuddy</title>
 <style>
   :root {
     --purple: #7c3aed;
@@ -25,14 +25,31 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-direction: row-reverse;
     position: sticky;
     top: 0;
     z-index: 100;
   }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
   .logo { font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, #7c3aed, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .nav-back { color: var(--purple-light); text-decoration: none; font-size: 0.9rem; }
   .nav-back:hover { text-decoration: underline; }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,58,237,0.15);
+    border: 1px solid rgba(124,58,237,0.4);
+    border-radius: 50px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--purple-light);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .lang-toggle:hover { background: rgba(124,58,237,0.3); border-color: rgba(168,85,247,0.6); }
+  .lang-toggle span { font-size: 1rem; }
 
   .hero {
     background: linear-gradient(135deg, var(--bg2), var(--bg3));
@@ -85,113 +102,222 @@
     font-size: 0.85rem;
   }
   footer a { color: var(--purple-light); text-decoration: none; }
+
+  .lang-he, .lang-en { display: none; }
+  .lang-he.active, .lang-en.active { display: block; }
+
+  html[dir="ltr"] .section ul { padding-right: 0; padding-left: 1.5rem; }
 </style>
 </head>
 <body>
 
 <nav>
-  <span class="logo">GameBuddy</span>
-  <a href="/" class="nav-back">← חזרה לעמוד הראשי</a>
+  <div class="nav-right">
+    <span class="logo">GameBuddy</span>
+    <button class="lang-toggle" onclick="toggleLang()">
+      <span id="lang-flag">🇺🇸</span>
+      <span id="lang-label">English</span>
+    </button>
+  </div>
+  <a href="../index.html" class="nav-back" id="nav-back-link">← חזרה לעמוד הראשי</a>
 </nav>
 
-<div class="hero">
-  <h1>מדיניות פרטיות</h1>
-  <p>אנחנו מכבדים את הפרטיות שלך ומחויבים להגן על המידע האישי שלך</p>
+<!-- lang toggle is built into this page -->
+<!-- HEBREW -->
+<div class="lang-he active" id="content-he">
+  <div class="hero">
+    <h1>מדיניות פרטיות</h1>
+    <p>אנחנו מכבדים את הפרטיות שלך ומחויבים להגן על המידע האישי שלך</p>
+  </div>
+  <div class="container">
+    <div class="section">
+      <h2>🏢 מי אנחנו</h2>
+      <p>GameBuddy היא פלטפורמה ישראלית למציאת שותפי משחק בפורטנייט. האתר פועל בכתובת <strong>gamebuddy.co.il</strong>.</p>
+      <p>לכל שאלה בנוגע למדיניות פרטיות זו, ניתן לפנות אלינו בכתובת: <strong>support@gamebuddy.co.il</strong></p>
+    </div>
+    <div class="section">
+      <h2>📋 איזה מידע אנחנו אוספים</h2>
+      <p>אנחנו אוספים את המידע הבא בעת ההרשמה לאתר:</p>
+      <ul>
+        <li>שם פרטי ושם משפחה</li>
+        <li>כתובת אימייל</li>
+        <li>שם משתמש ב-Epic Games</li>
+        <li>סגנון משחק ורמת ניסיון</li>
+        <li>תאריך הצטרפות</li>
+      </ul>
+      <p>בנוסף, אנחנו שולפים סטטיסטיקות משחק ציבוריות מ-API של Fortnite (כגון מספר ניצחונות, הרג/מוות וכו').</p>
+    </div>
+    <div class="section">
+      <h2>🎯 כיצד אנחנו משתמשים במידע</h2>
+      <ul>
+        <li>להצגת פרופיל המשתמש באתר</li>
+        <li>למציאת שותפי משחק מתאימים</li>
+        <li>לשיפור חווית המשתמש באתר</li>
+        <li>לשליחת עדכונים חשובים (אם בחרת לקבל)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>💾 איפה המידע נשמר</h2>
+      <p>המידע שלך נשמר ב-2 מקומות:</p>
+      <ul>
+        <li><strong>localStorage</strong> - בדפדפן שלך לצורך התחברות מהירה</li>
+        <li><strong>Google Sheets</strong> - לשמירת רשימת המשתמשים הרשומים, מאובטח על ידי Google</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>🔗 שירותי צד שלישי</h2>
+      <p>אנחנו משתמשים בשירותים חיצוניים הבאים:</p>
+      <ul>
+        <li><strong>Fortnite API</strong> - לשליפת סטטיסטיקות משחק ציבוריות</li>
+        <li><strong>Epic Games</strong> - לאימות חשבון המשתמש</li>
+        <li><strong>Google Sheets</strong> - לאחסון נתוני המשתמשים</li>
+      </ul>
+      <p>שירותים אלו כפופים למדיניות הפרטיות שלהם בנפרד.</p>
+    </div>
+    <div class="section">
+      <h2>🍪 Cookies ו-localStorage</h2>
+      <p>אנחנו משתמשים ב-localStorage של הדפדפן לשמירת פרטי ההתחברות שלך. אין אנחנו משתמשים ב-cookies למעקב או לפרסום.</p>
+    </div>
+    <div class="section">
+      <h2>👤 הזכויות שלך</h2>
+      <p>יש לך את הזכות:</p>
+      <ul>
+        <li>לגשת למידע האישי שלך</li>
+        <li>לתקן מידע שגוי</li>
+        <li>למחוק את חשבונך ואת כל המידע הקשור אליו</li>
+        <li>לבקש העברת המידע שלך</li>
+      </ul>
+      <p>לממש את זכויותיך, פנה אלינו ב: <strong>support@gamebuddy.co.il</strong></p>
+    </div>
+    <div class="section">
+      <h2>🔒 אבטחת מידע</h2>
+      <p>אנחנו נוקטים באמצעי אבטחה סבירים להגנה על המידע שלך. עם זאת, אין אנחנו יכולים להבטיח אבטחה מוחלטת של מידע המועבר דרך האינטרנט.</p>
+      <p><strong>חשוב:</strong> לעולם אל תשתף את סיסמתך עם אף אחד.</p>
+    </div>
+    <div class="section">
+      <h2>👶 ילדים מתחת לגיל 13</h2>
+      <p>השירות אינו מיועד לילדים מתחת לגיל 13. אם נודע לנו שאספנו מידע מילד מתחת לגיל 13, נמחק אותו לאלתר.</p>
+    </div>
+    <div class="section">
+      <h2>📝 שינויים במדיניות</h2>
+      <p>אנחנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. שינויים מהותיים יפורסמו באתר. המשך השימוש באתר לאחר פרסום שינויים מהווה הסכמה למדיניות המעודכנת.</p>
+    </div>
+    <div class="last-updated">עודכן לאחרונה: מאי 2026</div>
+  </div>
 </div>
 
-<div class="container">
-
-  <div class="section">
-    <h2>🏢 מי אנחנו</h2>
-    <p>GameBuddy היא פלטפורמה ישראלית למציאת שותפי משחק בפורטנייט. האתר פועל בכתובת <strong>gamebuddy.co.il</strong>.</p>
-    <p>לכל שאלה בנוגע למדיניות פרטיות זו, ניתן לפנות אלינו בכתובת: <strong>support@gamebuddy.co.il</strong></p>
+<!-- ENGLISH -->
+<div class="lang-en" id="content-en">
+  <div class="hero">
+    <h1>Privacy Policy</h1>
+    <p>We respect your privacy and are committed to protecting your personal information</p>
   </div>
-
-  <div class="section">
-    <h2>📋 איזה מידע אנחנו אוספים</h2>
-    <p>אנחנו אוספים את המידע הבא בעת ההרשמה לאתר:</p>
-    <ul>
-      <li>שם פרטי ושם משפחה</li>
-      <li>כתובת אימייל</li>
-      <li>שם משתמש ב-Epic Games</li>
-      <li>סגנון משחק ורמת ניסיון</li>
-      <li>תאריך הצטרפות</li>
-    </ul>
-    <p>בנוסף, אנחנו שולפים סטטיסטיקות משחק ציבוריות מ-API של Fortnite (כגון מספר ניצחונות, הרג/מוות וכו').</p>
+  <div class="container">
+    <div class="section">
+      <h2>🏢 Who We Are</h2>
+      <p>GameBuddy is an Israeli platform for finding Fortnite gaming partners. Our website is available at <strong>gamebuddy.co.il</strong>.</p>
+      <p>For any questions regarding this privacy policy, please contact us at: <strong>support@gamebuddy.co.il</strong></p>
+    </div>
+    <div class="section">
+      <h2>📋 What Information We Collect</h2>
+      <p>We collect the following information when you register on our platform:</p>
+      <ul>
+        <li>First and last name</li>
+        <li>Email address</li>
+        <li>Epic Games username</li>
+        <li>Play style and skill level</li>
+        <li>Date of registration</li>
+      </ul>
+      <p>We also retrieve publicly available game statistics from the Fortnite API (such as wins, kills/deaths, etc.).</p>
+    </div>
+    <div class="section">
+      <h2>🎯 How We Use Your Information</h2>
+      <ul>
+        <li>To display your user profile on the platform</li>
+        <li>To match you with compatible gaming partners</li>
+        <li>To improve your experience on our website</li>
+        <li>To send important updates (if you opted in)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>💾 Where Your Data Is Stored</h2>
+      <p>Your data is stored in 2 places:</p>
+      <ul>
+        <li><strong>localStorage</strong> — in your browser for fast login</li>
+        <li><strong>Google Sheets</strong> — to store registered user lists, secured by Google</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>🔗 Third-Party Services</h2>
+      <p>We use the following third-party services:</p>
+      <ul>
+        <li><strong>Fortnite API</strong> — to retrieve public game statistics</li>
+        <li><strong>Epic Games</strong> — for user account verification</li>
+        <li><strong>Google Sheets</strong> — for user data storage</li>
+      </ul>
+      <p>These services are subject to their own privacy policies.</p>
+    </div>
+    <div class="section">
+      <h2>🍪 Cookies & localStorage</h2>
+      <p>We use your browser's localStorage to save your login details. We do not use cookies for tracking or advertising purposes.</p>
+    </div>
+    <div class="section">
+      <h2>👤 Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access your personal data</li>
+        <li>Correct inaccurate information</li>
+        <li>Delete your account and all associated data</li>
+        <li>Request a transfer of your data</li>
+      </ul>
+      <p>To exercise your rights, contact us at: <strong>support@gamebuddy.co.il</strong></p>
+    </div>
+    <div class="section">
+      <h2>🔒 Data Security</h2>
+      <p>We take reasonable security measures to protect your information. However, we cannot guarantee absolute security of data transmitted over the internet.</p>
+      <p><strong>Important:</strong> Never share your password with anyone.</p>
+    </div>
+    <div class="section">
+      <h2>👶 Children Under 13</h2>
+      <p>This service is not intended for children under the age of 13. If we become aware that we have collected data from a child under 13, we will delete it immediately.</p>
+    </div>
+    <div class="section">
+      <h2>📝 Changes to This Policy</h2>
+      <p>We may update this privacy policy from time to time. Material changes will be posted on our website. Continued use of the site after changes are posted constitutes your agreement to the updated policy.</p>
+    </div>
+    <div class="last-updated">Last updated: May 2026</div>
   </div>
-
-  <div class="section">
-    <h2>🎯 כיצד אנחנו משתמשים במידע</h2>
-    <ul>
-      <li>להצגת פרופיל המשתמש באתר</li>
-      <li>למציאת שותפי משחק מתאימים</li>
-      <li>לשיפור חווית המשתמש באתר</li>
-      <li>לשליחת עדכונים חשובים (אם בחרת לקבל)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>💾 איפה המידע נשמר</h2>
-    <p>המידע שלך נשמר ב-2 מקומות:</p>
-    <ul>
-      <li><strong>localStorage</strong> - בדפדפן שלך לצורך התחברות מהירה</li>
-      <li><strong>Google Sheets</strong> - לשמירת רשימת המשתמשים הרשומים, מאובטח על ידי Google</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>🔗 שירותי צד שלישי</h2>
-    <p>אנחנו משתמשים בשירותים חיצוניים הבאים:</p>
-    <ul>
-      <li><strong>Fortnite API</strong> - לשליפת סטטיסטיקות משחק ציבוריות</li>
-      <li><strong>Epic Games</strong> - לאימות חשבון המשתמש</li>
-      <li><strong>Google Sheets</strong> - לאחסון נתוני המשתמשים</li>
-    </ul>
-    <p>שירותים אלו כפופים למדיניות הפרטיות שלהם בנפרד.</p>
-  </div>
-
-  <div class="section">
-    <h2>🍪 Cookies ו-localStorage</h2>
-    <p>אנחנו משתמשים ב-localStorage של הדפדפן לשמירת פרטי ההתחברות שלך. אין אנחנו משתמשים ב-cookies למעקב או לפרסום.</p>
-  </div>
-
-  <div class="section">
-    <h2>👤 הזכויות שלך</h2>
-    <p>יש לך את הזכות:</p>
-    <ul>
-      <li>לגשת למידע האישי שלך</li>
-      <li>לתקן מידע שגוי</li>
-      <li>למחוק את חשבונך ואת כל המידע הקשור אליו</li>
-      <li>לבקש העברת המידע שלך</li>
-    </ul>
-    <p>לממש את זכויותיך, פנה אלינו ב: <strong>support@gamebuddy.co.il</strong></p>
-  </div>
-
-  <div class="section">
-    <h2>🔒 אבטחת מידע</h2>
-    <p>אנחנו נוקטים באמצעי אבטחה סבירים להגנה על המידע שלך. עם זאת, אין אנחנו יכולים להבטיח אבטחה מוחלטת של מידע המועבר דרך האינטרנט.</p>
-    <p><strong>חשוב:</strong> לעולם אל תשתף את סיסמתך עם אף אחד.</p>
-  </div>
-
-  <div class="section">
-    <h2>👶 ילדים מתחת לגיל 13</h2>
-    <p>השירות אינו מיועד לילדים מתחת לגיל 13. אם נודע לנו שאספנו מידע מילד מתחת לגיל 13, נמחק אותו לאלתר.</p>
-  </div>
-
-  <div class="section">
-    <h2>📝 שינויים במדיניות</h2>
-    <p>אנחנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. שינויים מהותיים יפורסמו באתר. המשך השימוש באתר לאחר פרסום שינויים מהווה הסכמה למדיניות המעודכנת.</p>
-  </div>
-
-  <div class="last-updated">
-    עודכן לאחרונה: מאי 2026
-  </div>
-
 </div>
 
 <footer>
-  <p>© 2026 GameBuddy. כל הזכויות שמורות. | <a href="/">עמוד ראשי</a></p>
+  <p>© 2026 GameBuddy. All rights reserved. | <a href="../index.html">Home</a></p>
 </footer>
+
+<script>
+  let currentLang = 'he';
+
+  function toggleLang() {
+    if (currentLang === 'he') {
+      currentLang = 'en';
+      document.getElementById('html-root').setAttribute('lang', 'en');
+      document.getElementById('html-root').setAttribute('dir', 'ltr');
+      document.getElementById('content-he').classList.remove('active');
+      document.getElementById('content-en').classList.add('active');
+      document.getElementById('lang-flag').textContent = '🇮🇱';
+      document.getElementById('lang-label').textContent = 'עברית';
+      document.getElementById('nav-back-link').textContent = '← Back to Home';
+    } else {
+      currentLang = 'he';
+      document.getElementById('html-root').setAttribute('lang', 'he');
+      document.getElementById('html-root').setAttribute('dir', 'rtl');
+      document.getElementById('content-en').classList.remove('active');
+      document.getElementById('content-he').classList.add('active');
+      document.getElementById('lang-flag').textContent = '🇺🇸';
+      document.getElementById('lang-label').textContent = 'English';
+      document.getElementById('nav-back-link').textContent = '← חזרה לעמוד הראשי';
+    }
+  }
+</script>
 
 </body>
 </html>
