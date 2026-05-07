@@ -1306,7 +1306,14 @@
     const { data, error } = await getSupabase().auth.signInWithPassword({ email, password });
 
     if (error) {
-      errEl.textContent = '❌ מייל או סיסמא שגויים';
+      const msg = error.message || '';
+      if (msg.includes('Email not confirmed')) {
+        errEl.textContent = '❌ יש לאשר את המייל שנשלח אליך לפני הכניסה';
+      } else if (msg.includes('Invalid login')) {
+        errEl.textContent = '❌ מייל או סיסמא שגויים';
+      } else {
+        errEl.textContent = '❌ ' + msg;
+      }
       btn.textContent = 'כניסה לדאשבורד →';
       btn.disabled = false;
       return;
