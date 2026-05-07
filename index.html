@@ -1287,7 +1287,7 @@
     document.getElementById('login-modal').classList.remove('open');
     document.body.style.overflow = '';
   }
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
     const form     = e.target;
     const email    = form.querySelector('input[type="email"]').value.trim().toLowerCase();
@@ -1299,29 +1299,19 @@
       form.appendChild(d); return d;
     })();
 
-    let allUsers = JSON.parse(localStorage.getItem('gb_users') || '[]');
+    const btn = form.querySelector('.signup-submit');
+    btn.textContent = 'מתחבר...';
+    btn.disabled = true;
 
-    // מיגרציה: אם יש משתמש ישן ב-gb_user, העבר אותו לרשימה
-    const oldUser = JSON.parse(localStorage.getItem('gb_user') || 'null');
-    if (oldUser && oldUser.email && !allUsers.find(u => u.email === oldUser.email.toLowerCase())) {
-      oldUser.email = oldUser.email.toLowerCase();
-      allUsers.push(oldUser);
-      localStorage.setItem('gb_users', JSON.stringify(allUsers));
-    }
+    const { data, error } = await getSupabase().auth.signInWithPassword({ email, password });
 
-    const matched = allUsers.find(u => u.email === email);
-
-    if (!matched) {
-      errEl.textContent = '❌ לא נמצא חשבון עם מייל זה — הירשם קודם';
+    if (error) {
+      errEl.textContent = '❌ מייל או סיסמא שגויים';
+      btn.textContent = 'כניסה לדאשבורד →';
+      btn.disabled = false;
       return;
     }
 
-    if (matched.password && matched.password !== password) {
-      errEl.textContent = '❌ סיסמא שגויה';
-      return;
-    }
-
-    localStorage.setItem('gb_user', JSON.stringify(matched));
     window.location.href = 'dashboard.html';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLogin(); closeSignup(); } });
@@ -1339,9 +1329,7 @@
   }
 
 
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbygce5TF8bKeTZFtty0ByRzzh3tx_HQOOEDRt8de0FEWM-64eIIwjBluacp9rCbrARWYA/exec';
-
-  function handleSignup(e) {
+  async function handleSignup(e) {
     e.preventDefault();
     const form = e.target;
     const passwords = form.querySelectorAll('input[type="password"]');
@@ -1353,46 +1341,46 @@
     }
 
     const btn = form.querySelector('.signup-submit');
-    btn.textContent = 'שומר...';
+    btn.textContent = 'יוצר חשבון...';
     btn.disabled = true;
 
     const inputs = form.querySelectorAll('input, select');
-    const data = {
-      firstName: inputs[0].value,
-      lastName:  inputs[1].value,
-      email:     inputs[2].value,
-      rank:      inputs[5].value,
-      style:     inputs[6].value
-    };
+    const firstName = inputs[0].value.trim();
+    const lastName  = inputs[1].value.trim();
+    const email     = inputs[2].value.trim().toLowerCase();
+    const password  = inputs[3].value;
+    const rank      = inputs[5].value;
+    const style     = inputs[6].value;
 
-    // שמור ב-localStorage (רשימת משתמשים)
-    const newUser = {
-      firstName: data.firstName,
-      lastName:  data.lastName,
-      email:     data.email.toLowerCase(),
-      password:  inputs[3].value,
-      rank:      data.rank,
-      style:     data.style,
-      plan:      'חינמי',
-      joinDate:  new Date().toLocaleDateString('he-IL'),
-      avatar:    data.firstName.charAt(0).toUpperCase()
-    };
-    const allUsers = JSON.parse(localStorage.getItem('gb_users') || '[]');
-    const existingIdx = allUsers.findIndex(u => u.email === newUser.email);
-    if (existingIdx >= 0) allUsers[existingIdx] = newUser;
-    else allUsers.push(newUser);
-    localStorage.setItem('gb_users', JSON.stringify(allUsers));
-    localStorage.setItem('gb_user', JSON.stringify(newUser));
-
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    }).finally(() => {
-      // redirect לדאשבורד
-      window.location.href = 'dashboard.html';
+    const { data, error } = await getSupabase().auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          first_name: firstName,
+          last_name:  lastName,
+          rank,
+          style,
+          plan:   'חינמי',
+          avatar: firstName.charAt(0).toUpperCase()
+        }
+      }
     });
+
+    if (error) {
+      const errEl = document.createElement('p');
+      errEl.style.cssText = 'color:#f87171;font-size:0.85rem;margin-top:8px;text-align:center;';
+      errEl.textContent = error.message.includes('already registered')
+        ? '❌ מייל זה כבר רשום — נסה להתחבר'
+        : '❌ שגיאה: ' + error.message;
+      form.appendChild(errEl);
+      btn.textContent = 'הצטרפו לבטא — בחינם 🎮';
+      btn.disabled = false;
+      return;
+    }
+
+    document.getElementById('signup-form-wrap').style.display = 'none';
+    document.getElementById('signup-success').style.display = 'block';
   }
 
   // ─── MOBILE MENU ───
@@ -1604,6 +1592,8 @@
   `;
   document.head.appendChild(s);
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
   <script src="lang.js"></script>
 </body>
 </html>

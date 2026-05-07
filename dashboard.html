@@ -892,7 +892,7 @@
     </nav>
 
     <div class="sidebar-bottom">
-      <p>חזרה ל<a onclick="window.location.href='index.html'" style="cursor:pointer;">דף הבית</a></p>
+      <p>חזרה ל<a onclick="window.location.href='index.html'" style="cursor:pointer;">דף הבית</a> · <a onclick="gbLogout()" style="cursor:pointer;color:#f87171;">יציאה</a></p>
     </div>
   </aside>
 
@@ -1504,41 +1504,51 @@
 </div>
 
 <script>
-  // ─── USER SESSION ─────────────────────────────────────
-  const gbUser = JSON.parse(localStorage.getItem('gb_user') || 'null');
+  // ─── USER SESSION (Supabase) ──────────────────────────
+  async function initSession() {
+    const { data: { user } } = await getSupabase().auth.getUser();
 
-  if (!gbUser) {
-    // לא מחובר — חזור לדף הבית
-    window.location.href = 'index.html';
-  } else {
-    const fullName = `${gbUser.firstName} ${gbUser.lastName}`;
-    const initial  = gbUser.firstName.charAt(0).toUpperCase();
+    if (!user) {
+      window.location.href = 'index.html';
+      return;
+    }
+
+    const m         = user.user_metadata || {};
+    const firstName = m.first_name || user.email.split('@')[0];
+    const lastName  = m.last_name  || '';
+    const fullName  = `${firstName} ${lastName}`.trim();
+    const initial   = firstName.charAt(0).toUpperCase();
+    const plan      = m.plan  || 'חינמי';
+    const rank      = m.rank  || localStorage.getItem('gb_manual_rank') || 'לא מדורג';
+    const style     = m.style || '—';
+    const joinDate  = new Date(user.created_at).toLocaleDateString('he-IL');
 
     // Sidebar
     document.getElementById('sidebar-avatar').textContent = initial;
-    document.getElementById('sidebar-name').textContent   = gbUser.firstName;
-    document.getElementById('sidebar-plan').textContent   = gbUser.plan === 'פרימיום' ? '⭐ פרימיום' : '🆓 חינמי';
+    document.getElementById('sidebar-name').textContent   = firstName;
+    document.getElementById('sidebar-plan').textContent   = plan === 'פרימיום' ? '⭐ פרימיום' : '🆓 חינמי';
 
     // Dashboard greeting
-    document.getElementById('dashboard-greeting').textContent = `שלום, ${gbUser.firstName}! 👋`;
+    document.getElementById('dashboard-greeting').textContent = `שלום, ${firstName}! 👋`;
 
     // Dashboard rank
-    const userRank = gbUser.rank || localStorage.getItem('gb_manual_rank') || 'לא מדורג';
-    document.getElementById('dashboard-rank').textContent     = userRank;
-    document.getElementById('dashboard-rank-sub').textContent = gbUser.email;
+    document.getElementById('dashboard-rank').textContent     = rank;
+    document.getElementById('dashboard-rank-sub').textContent = user.email;
 
     // Profile page
     const profileName   = document.getElementById('profile-display-name');
     const profileHandle = document.getElementById('profile-handle');
     const profileAvatar = document.getElementById('profile-avatar-lg');
     if (profileName)   profileName.textContent   = `${fullName} ⭐`;
-    if (profileHandle) profileHandle.textContent = `@${gbUser.firstName.toLowerCase()}_gb · חבר מ-${gbUser.joinDate}`;
+    if (profileHandle) profileHandle.textContent = `@${firstName.toLowerCase()}_gb · חבר מ-${joinDate}`;
     if (profileAvatar) profileAvatar.textContent = initial;
     const rankTag  = document.getElementById('profile-rank-tag');
     const styleTag = document.getElementById('profile-style-tag');
-    if (rankTag)  rankTag.textContent  = gbUser.rank  || 'לא מדורג';
-    if (styleTag) styleTag.textContent = gbUser.style || '—';
+    if (rankTag)  rankTag.textContent  = rank;
+    if (styleTag) styleTag.textContent = style;
   }
+
+  initSession();
 
   // ─── DATA ───────────────────────────────────────────────
   const PLAYERS = [
@@ -2268,6 +2278,14 @@
   `;
   document.head.appendChild(gbStyle);
 
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-client.js"></script>
+<script>
+  async function gbLogout() {
+    await getSupabase().auth.signOut();
+    window.location.href = 'index.html';
+  }
 </script>
 <script src="lang.js"></script>
 </body>
